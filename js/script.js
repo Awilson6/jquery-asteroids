@@ -9,15 +9,26 @@ $.ajax({
 
     var asteroids = results.near_earth_objects["2015-09-08"];
     var asteroid;
+    var currentRow;
     for(var i = 0; i < asteroids.length; i ++) {
 
-      asteroid = $("<h3></h3>").html(asteroids[i].name);
-      $(".container").append(asteroid);
+      if (i % 3 === 0) {
+         currentRow = $("<div></div>").addClass("row");
+         $(".container").append(currentRow);
+      }
+      makeName(asteroids[i], currentRow);
+
+      // asteroid = $("<h3></h3>").html(asteroids[i].name);
+      // $(".container").append(asteroid);
     }
   }
 });
 //funciton creates a colunm containing the asteroids name.
-function makeName(asteroid){
+function makeName(asteroid, row){
+  var colunm = $("<div></div>").addClass("col-md-4");
+  var name = $("<h3></h3>").html(asteroid.name);
 
+  $(colunm).append(name);
+  $(row).append(colunm);
 
 }
