@@ -3,6 +3,8 @@ var url = "https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&end_date=
 $.ajax({
   url: url,
   success: function(results) {
-    alert("Got back " + results.element_count + " asteroids");
-  }
+    $ ("#count").html(results.element_count)
+    //Below is another way to, but loner and ungainly.
+    //document.getElementsByClassName("count").innerHTML = results.element_count;
+    }
 });
